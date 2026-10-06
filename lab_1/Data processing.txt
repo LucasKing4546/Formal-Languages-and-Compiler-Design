@@ -1,0 +1,58 @@
+Data processing
+
+<program> ::= <statements>
+<statements> ::= <statement> | <statement> <statements>
+<id> = <identifier>
+<identifier> = <letter> | <letter> <identifier_rest>
+<identifier_rest> = <letter> | <digit> | "" | <letter> <identifier_rest> | <digit> <identifier_rest>
+<operator> ::= "+" | "-" | "*"
+<comp_op> ::= "==" | "!=" | "<" | "<=" | ">" | ">="
+<logical_op> ::= "and" | "or"
+<function> ::= "size" | "isEmpty" | "sum" | "min" | "max"
+<function_call> ::= <function> "(" <id> ")" | "count" "(" <id> "," <value> ")"
+<order> ::= "asc" | "desc"
+<number> ::= "0" | <nonzero_digit> <digits_opt>
+<digits_opt> ::= <digit> | <digit> <digits_opt> | ""
+<nonzero_digit> ::= "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<digit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<digits> ::= <digit> | <digit> <digits>
+<letter> ::= "a" | "b" | … | "z" | "A" | "B" | … | "Z"
+
+<condition> ::= <comparison> | <comparison> <logical_op> <condition>
+<comparison> ::= <term> <comp_op> <term> | "isEmpty" "(" <id> ")"
+
+<value_expr> ::= <term> | <term> <operator> <value_expr>
+<term> ::= <value> | <id> | <array> | <index_access> | <function_call>
+
+<integer> ::= <number>
+<char> ::= <digit> | <letter>
+<float> ::= <number> "." <digits>
+<string> ::= """ <string_content> """
+<string_content> ::= <char> | <char> <string_content>
+<array> ::= "[" "]" | "[" <value_list> "]"
+<value_list> ::= <value> | <value> "," <value_list>
+<value> ::= <string> | <integer> | <float>
+
+
+<statement> ::= <input> | <output> | <append> | <map> | <sort> | <filter> | <if> | <for> | <while> | <load> | <save> | <print> | <remove> | <insert> | <reverse> | <concat> | <assign> | <distinct> | <clear> | <copy>
+
+<input> ::= "in" <id>
+<output> ::= "out" <value_expr>
+<append> ::= <id> ".append" "(" <append_arg> ")"
+<append_arg> ::= <value> | <array>
+<map> ::= "map" <id> <id> "=>" <value_expr>
+<filter> ::= "filter" <id> <id> "=>" <condition>
+<sort> ::= "sort" <id> <order>
+<if> ::= "if" <condition> ":" <statements>
+<for> ::= "for" <id> "in" <id> ":" <statements>
+<while> ::= "while" <condition> ":" <statements>
+<load> ::= "load" <id> <string>
+<save> ::= "save" <id> <string>
+<remove> ::= "remove" <id> <number>
+<insert> ::= "insert" <id> <number> <value>
+<reverse> ::= "reverse" <id>
+<concat> ::= "concat" <id> <id>
+<assign> ::= <id> "=" <value_expr> | <index_access> "=" <value_expr>
+<distinct> ::= "distinct" <id>
+<clear> ::= "clear" <id>
+<copy> ::= "copy" <id> <id>
