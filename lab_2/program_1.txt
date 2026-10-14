@@ -1,0 +1,9 @@
+array = []
+load array "input.csv"
+sort array desc
+remove array 0
+reverse array
+filter array x => x > 10 and x <= 100
+distinct array
+out array
+save array "out.csv"

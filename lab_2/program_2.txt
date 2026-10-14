@@ -1,0 +1,18 @@
+grades = []
+load grades "grades.csv"
+in bonus
+map grades g => g + bonus
+filter grades g => g >= 5 and g <= 10
+distinct grades
+sort grades desc
+if isEmpty(grades):
+    grades.append(0)
+while size(grades) > 3:
+    remove grades 3
+copy grades top
+insert top 0 10
+avg = sum(top) / size(top)
+out avg
+out max(top) - min(top)
+out count(top, 10)
+save top "top3.csv"
